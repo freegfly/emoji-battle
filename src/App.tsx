@@ -53,15 +53,15 @@ type GamePhase = 'upload' | 'matching' | 'battle' | 'result'
 
 // ============ Built-in Meme Images ============
 const REGULAR_ENEMIES = [
-  { image: '/memes/panda.jpg', name: '老爷保号保号', power: 155 },
-  { image: '/memes/meme3.jpg', name: '呜呜呜我太难了', power: 170 },
-  { image: '/memes/meme4.jpg', name: '我疯了我真的疯了', power: 165 },
-  { image: '/memes/meme5.jpg', name: '就挺突然的', power: 150 },
-  { image: '/memes/meme7.jpg', name: '完了完了要没了', power: 175 },
-  { image: '/memes/meme9.jpg', name: '小丑竟是我自己', power: 160 },
-  { image: '/memes/meme2.jpg', name: '我就静静看着', power: 155 },
-  { image: '/memes/meme10.jpg', name: '你礼貌吗', power: 180 },
-  { image: '/memes/meme11.jpg', name: '就你叫XX啊', power: 165 },
+  { image: '/emoji-battle/memes/panda.jpg', name: '老爷保号保号', power: 155 },
+  { image: '/emoji-battle/memes/meme3.jpg', name: '呜呜呜我太难了', power: 170 },
+  { image: '/emoji-battle/memes/meme4.jpg', name: '我疯了我真的疯了', power: 165 },
+  { image: '/emoji-battle/memes/meme5.jpg', name: '就挺突然的', power: 150 },
+  { image: '/emoji-battle/memes/meme7.jpg', name: '完了完了要没了', power: 175 },
+  { image: '/emoji-battle/memes/meme9.jpg', name: '小丑竟是我自己', power: 160 },
+  { image: '/emoji-battle/memes/meme2.jpg', name: '我就静静看着', power: 155 },
+  { image: '/emoji-battle/memes/meme10.jpg', name: '你礼貌吗', power: 180 },
+  { image: '/emoji-battle/memes/meme11.jpg', name: '就你叫XX啊', power: 165 },
 ]
 
 // 4 Champions (Heavenly Kings) - 1.5x HP
