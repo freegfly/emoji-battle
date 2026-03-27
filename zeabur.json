@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.zeabur.com/zeabur.schema.json",
+  "build": {
+    "command": "npm run build",
+    "outputDir": "dist"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "handler": "static"
+    }
+  ]
+}
