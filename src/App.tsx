@@ -1063,7 +1063,7 @@ function App() {
       setLogs([])
       setLogIdCounter(0)
       setNewBadge(null)
-      setPhase('upload')
+      setPhase('matching') // 直接进入匹配环节
     }
     reader.readAsDataURL(file)
     e.target.value = ''
