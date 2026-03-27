@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { cn } from './lib/utils'
 import Leaderboard from './components/Leaderboard'
 import MemePool from './components/MemePool'
+import { userApi } from './services/api'
 
 // ============ Types ============
 interface Player {
@@ -472,13 +473,14 @@ function BattlePhase({ player, enemy, logs, timeLeft, playerHp, enemyHp, playerE
   )
 }
 
-function ResultPhase({ playerWon, player, enemy, onNextRound, newBadge, onChangeMeme }: {
+function ResultPhase({ playerWon, player, enemy, onNextRound, newBadge, onChangeMeme, onGoHome }: {
   playerWon: boolean
   player: Player
   enemy: Player
   onNextRound: () => void
   newBadge: Badge | null
   onChangeMeme: () => void
+  onGoHome: () => void
 }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 relative">
@@ -546,13 +548,18 @@ function ResultPhase({ playerWon, player, enemy, onNextRound, newBadge, onChange
           </div>
         </div>
 
-        <div className="flex gap-3 w-full">
-          <button onClick={onNextRound} className="flex-1 py-3 sm:py-4 rounded-xl font-black text-base sm:text-lg btn-success animate-slide-up" style={{ animationDelay: newBadge ? '0.3s' : '0.2s' }}>
+        <div className="flex flex-col gap-3 w-full">
+          <button onClick={onNextRound} className="w-full py-3 sm:py-4 rounded-xl font-black text-base sm:text-lg btn-success animate-slide-up" style={{ animationDelay: newBadge ? '0.3s' : '0.2s' }}>
             🔄 再来一局
           </button>
-          <button onClick={onChangeMeme} className="flex-1 py-3 sm:py-4 rounded-xl font-black text-base sm:text-lg btn-secondary animate-slide-up" style={{ animationDelay: newBadge ? '0.3s' : '0.2s' }}>
-            🖼️ 更换表情包
-          </button>
+          <div className="flex gap-3">
+            <button onClick={onChangeMeme} className="flex-1 py-3 sm:py-4 rounded-xl font-black text-base sm:text-lg btn-secondary animate-slide-up">
+              🖼️ 更换
+            </button>
+            <button onClick={onGoHome} className="flex-1 py-3 sm:py-4 rounded-xl font-black text-base sm:text-lg bg-dark-card border border-dark-border hover:border-neon-purple/50 animate-slide-up">
+              🏠 返回主页
+            </button>
+          </div>
         </div>
 
         <p className="text-xs text-gray-500 mt-3 sm:mt-4 text-center">💡 分享战绩给好友一起对战吧！</p>
@@ -583,8 +590,43 @@ function App() {
   const [showLeaderboard, setShowLeaderboard] = useState(false)
   const [showMemePool, setShowMemePool] = useState(false)
   const changeMemeFileInputRef = useRef<HTMLInputElement>(null)
-
   const [userStats, setUserStats] = useState({ wins: 0, losses: 0, winRate: 0 })
+
+  // 加载用户数据
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const { user } = await userApi.getInfo()
+        const total = user.wins + user.losses
+        setUserStats({
+          wins: user.wins,
+          losses: user.losses,
+          winRate: total > 0 ? Math.round((user.wins / total) * 100) : 0
+        })
+        // 加载徽章
+        setBadges(user.badges.map((badgeId: string) => {
+          const badgeMap: Record<string, Badge> = {
+            'champion_expression': { id: 'champion_expression', name: '挑战表情天王成功', emoji: '👑', color: '#ffd700', earnedAt: Date.now() },
+            'champion_passion': { id: 'champion_passion', name: '挑战热血天王成功', emoji: '🔥', color: '#ffd700', earnedAt: Date.now() },
+            'champion_lightning': { id: 'champion_lightning', name: '挑战闪电天王成功', emoji: '⚡', color: '#ffd700', earnedAt: Date.now() },
+            'champion_diamond': { id: 'champion_diamond', name: '挑战钻石天王成功', emoji: '💎', color: '#ffd700', earnedAt: Date.now() },
+          }
+          return badgeMap[badgeId] || { id: badgeId, name: badgeId, emoji: '🏆', color: '#ffd700', earnedAt: Date.now() }
+        }))
+      } catch (err) {
+        console.error('加载用户数据失败:', err)
+      }
+    }
+    loadUserData()
+  }, [])
+
+  // 返回主页
+  const handleGoHome = () => {
+    setPhase('upload')
+    setEnemy(null)
+    setLogs([])
+    setNewBadge(null)
+  }
 
   const battleState = useRef({
     playerHp: 0,
@@ -1093,6 +1135,7 @@ function App() {
           onNextRound={handleNextRound}
           newBadge={newBadge}
           onChangeMeme={handleChangeMeme}
+          onGoHome={handleGoHome}
         />
       )}
     </div>

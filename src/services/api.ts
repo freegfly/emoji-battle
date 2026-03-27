@@ -70,12 +70,12 @@ export interface LeaderboardEntry {
   isCurrentUser: boolean;
 }
 
-// 系统内置表情包（四大天王）
+// 系统内置表情包（四大天王）- 使用本地图片
 export const SYSTEM_MEMES: Meme[] = [
   {
     id: 'system_1',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/001.png',
+    imageUrl: '/emoji-battle/memes/meme2.jpg',
     power: 95,
     hp: 285,
     skill: { name: '致命毒液', emoji: '🧪', type: 'dot', color: '#22c55e', baseDamage: 25 },
@@ -87,7 +87,7 @@ export const SYSTEM_MEMES: Meme[] = [
   {
     id: 'system_2',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/002.png',
+    imageUrl: '/emoji-battle/memes/meme3.jpg',
     power: 88,
     hp: 264,
     skill: { name: '热血怒吼', emoji: '🔥', type: 'stack', color: '#ef4444', baseDamage: 15 },
@@ -99,7 +99,7 @@ export const SYSTEM_MEMES: Meme[] = [
   {
     id: 'system_3',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/003.png',
+    imageUrl: '/emoji-battle/memes/meme4.jpg',
     power: 82,
     hp: 246,
     skill: { name: '闪电打击', emoji: '⚡', type: 'crit', color: '#eab308', baseDamage: 45 },
@@ -111,7 +111,7 @@ export const SYSTEM_MEMES: Meme[] = [
   {
     id: 'system_4',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/004.png',
+    imageUrl: '/emoji-battle/memes/meme5.jpg',
     power: 100,
     hp: 300,
     skill: { name: '钻石护盾', emoji: '💎', type: 'shield', color: '#06b6d4', baseDamage: 0 },
@@ -127,7 +127,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_1',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/005.png',
+    imageUrl: '/emoji-battle/memes/panda.jpg',
     power: 70,
     hp: 210,
     skill: { name: '卖萌攻击', emoji: '🥺', type: 'stack', color: '#ec4899', baseDamage: 12 },
@@ -139,7 +139,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_2',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/006.png',
+    imageUrl: '/emoji-battle/memes/meme7.jpg',
     power: 65,
     hp: 195,
     skill: { name: '无语凝视', emoji: '😑', type: 'dot', color: '#6b7280', baseDamage: 18 },
@@ -151,7 +151,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_3',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/007.png',
+    imageUrl: '/emoji-battle/memes/meme9.jpg',
     power: 75,
     hp: 225,
     skill: { name: '大笑攻击', emoji: '🤣', type: 'crit', color: '#f97316', baseDamage: 35 },
@@ -163,7 +163,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_4',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/008.png',
+    imageUrl: '/emoji-battle/memes/meme10.jpg',
     power: 68,
     hp: 204,
     skill: { name: '震惊一击', emoji: '😱', type: 'crit', color: '#8b5cf6', baseDamage: 40 },
@@ -175,7 +175,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_5',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/009.png',
+    imageUrl: '/emoji-battle/memes/meme11.jpg',
     power: 72,
     hp: 216,
     skill: { name: '得意洋洋', emoji: '😏', type: 'stack', color: '#14b8a6', baseDamage: 14 },
@@ -187,7 +187,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_6',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/010.png',
+    imageUrl: '/emoji-battle/memes/panda.jpg',
     power: 60,
     hp: 180,
     skill: { name: '哭泣治疗', emoji: '😭', type: 'heal', color: '#3b82f6', baseDamage: 20 },
@@ -199,7 +199,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_7',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/011.png',
+    imageUrl: '/emoji-battle/memes/meme3.jpg',
     power: 78,
     hp: 234,
     skill: { name: '无语反击', emoji: '🙄', type: 'dot', color: '#a855f7', baseDamage: 22 },
@@ -211,7 +211,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_8',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/012.png',
+    imageUrl: '/emoji-battle/memes/meme4.jpg',
     power: 85,
     hp: 255,
     skill: { name: '666冲击', emoji: '6️⃣', type: 'crit', color: '#22d3ee', baseDamage: 50 },
@@ -223,7 +223,7 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_9',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/013.png',
+    imageUrl: '/emoji-battle/memes/panda.jpg',
     power: 55,
     hp: 165,
     skill: { name: '狗头护体', emoji: '🐕', type: 'shield', color: '#d97706', baseDamage: 0 },
@@ -235,11 +235,11 @@ export const HOT_MEMES: Meme[] = [
   {
     id: 'hot_10',
     userId: 'system',
-    imageUrl: 'https://pic.imgdb.cn/item/emoji/014.png',
+    imageUrl: '/emoji-battle/memes/meme7.jpg',
     power: 80,
     hp: 240,
     skill: { name: 'doge闪避', emoji: '✈️', type: 'shield', color: '#fbbf24', baseDamage: 0 },
-    name: ' flying doge',
+    name: 'flying doge',
     isSystem: true,
     isActive: false,
     createdAt: 0,
